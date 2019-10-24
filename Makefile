@@ -111,44 +111,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named static_string
+# Target rules for targets named runTest
 
 # Build rule for target.
-static_string: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 static_string
-.PHONY : static_string
+runTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 runTest
+.PHONY : runTest
 
 # fast build rule for target.
-static_string/fast:
-	$(MAKE) -f CMakeFiles/static_string.dir/build.make CMakeFiles/static_string.dir/build
-.PHONY : static_string/fast
+runTest/fast:
+	$(MAKE) -f CMakeFiles/runTest.dir/build.make CMakeFiles/runTest.dir/build
+.PHONY : runTest/fast
 
-static_string.o: static_string.cpp.o
+test.o: test.cpp.o
 
-.PHONY : static_string.o
+.PHONY : test.o
 
 # target to build an object file
-static_string.cpp.o:
-	$(MAKE) -f CMakeFiles/static_string.dir/build.make CMakeFiles/static_string.dir/static_string.cpp.o
-.PHONY : static_string.cpp.o
+test.cpp.o:
+	$(MAKE) -f CMakeFiles/runTest.dir/build.make CMakeFiles/runTest.dir/test.cpp.o
+.PHONY : test.cpp.o
 
-static_string.i: static_string.cpp.i
+test.i: test.cpp.i
 
-.PHONY : static_string.i
+.PHONY : test.i
 
 # target to preprocess a source file
-static_string.cpp.i:
-	$(MAKE) -f CMakeFiles/static_string.dir/build.make CMakeFiles/static_string.dir/static_string.cpp.i
-.PHONY : static_string.cpp.i
+test.cpp.i:
+	$(MAKE) -f CMakeFiles/runTest.dir/build.make CMakeFiles/runTest.dir/test.cpp.i
+.PHONY : test.cpp.i
 
-static_string.s: static_string.cpp.s
+test.s: test.cpp.s
 
-.PHONY : static_string.s
+.PHONY : test.s
 
 # target to generate assembly for a file
-static_string.cpp.s:
-	$(MAKE) -f CMakeFiles/static_string.dir/build.make CMakeFiles/static_string.dir/static_string.cpp.s
-.PHONY : static_string.cpp.s
+test.cpp.s:
+	$(MAKE) -f CMakeFiles/runTest.dir/build.make CMakeFiles/runTest.dir/test.cpp.s
+.PHONY : test.cpp.s
 
 # Help Target
 help:
@@ -157,11 +157,11 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... static_string"
+	@echo "... runTest"
 	@echo "... edit_cache"
-	@echo "... static_string.o"
-	@echo "... static_string.i"
-	@echo "... static_string.s"
+	@echo "... test.o"
+	@echo "... test.i"
+	@echo "... test.s"
 .PHONY : help
 
 

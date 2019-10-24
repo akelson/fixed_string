@@ -52,12 +52,12 @@ class static_string : public static_string_base
 
   virtual iterator end()
   {
-    return str_ + size() + 1;
+    return str_ + size();
   }
 
   virtual const_iterator end() const
   {
-    return str_ + size() + 1;
+    return str_ + size();
   }
 
   virtual const size_t size() const
@@ -75,7 +75,7 @@ class static_string : public static_string_base
     str_[0] = '\0';
   }
 
-  virtual bool empty()
+  virtual bool empty() const
   {
     return '\0' == str_[0];
   }
@@ -105,6 +105,13 @@ class static_string : public static_string_base
   virtual const char *c_str() const
   {
     return str_;
+  }
+
+  static_string<MAX_SIZE> substr(size_t pos, size_t len) const
+  {
+    static_string<MAX_SIZE> result;
+    memcpy(result.str_, &str_[pos], len);
+    return result;
   }
 
   char str_[MAX_SIZE + 1];

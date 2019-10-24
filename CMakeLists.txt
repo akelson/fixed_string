@@ -1,10 +1,16 @@
 cmake_minimum_required (VERSION 3.0)
 
+include_directories(${GTEST_INCLUDE_DIRS})
+
+find_package(GTest REQUIRED)
+
 add_executable(
-  static_string
-  static_string.cpp
+  runTest
+  test.cpp
   )
 
+target_link_libraries(runTest ${GTEST_LIBRARIES} pthread)
+
 target_compile_options(
-  static_string PRIVATE -Werror -Wall
+  runTest PRIVATE -Werror -Wall
   )
