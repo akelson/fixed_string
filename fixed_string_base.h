@@ -3,14 +3,14 @@
 
 #include <cstddef> // for size_t
 
-class static_string_base
+class fixed_string_base
 {
  public:
   typedef char * iterator;
   typedef const char * const_iterator;
 
-  virtual static_string_base& operator= (const static_string_base &) = 0;
-  virtual static_string_base& operator= (const char *) = 0;
+  virtual fixed_string_base& operator= (const fixed_string_base &) = 0;
+  virtual fixed_string_base& operator= (const char *) = 0;
 
   virtual iterator begin() = 0;
   virtual const_iterator begin() const = 0;
@@ -26,8 +26,8 @@ class static_string_base
   virtual const char& operator[] (size_t pos) const = 0;
   virtual const char *c_str() const = 0;
 
-  virtual static_string_base& append(const static_string_base &) = 0;
-  virtual static_string_base& append(const char *) = 0;
+  virtual fixed_string_base& append(const fixed_string_base &) = 0;
+  virtual fixed_string_base& append(const char *) = 0;
 };
 
 #endif  // STATIC_STRING_BASE_H

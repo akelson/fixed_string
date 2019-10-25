@@ -3,37 +3,37 @@
 
 #include <string.h>
 
-#include "static_string_base.h"
+#include "fixed_string_base.h"
 
 template <size_t MAX_SIZE>
-class static_string : public static_string_base
+class fixed_string : public fixed_string_base
 {
  public:
   
   // Default Constructor
-  static_string() : str_() {}
+  fixed_string() : str_() {}
 
   // Constructor
-  static_string(const char *str) : str_()
+  fixed_string(const char *str) : str_()
   {
     strncpy(str_, str, MAX_SIZE);
   }
 
   // Constructor
   template <size_t OTHER_MAX_SIZE>
-  static_string(const static_string<OTHER_MAX_SIZE> str) : str_()
+  fixed_string(const fixed_string<OTHER_MAX_SIZE> str) : str_()
   {
     strncpy(str_, str.str_, MAX_SIZE);
   }
 
   // Copy-Assign
-  virtual static_string_base& operator= (const static_string_base &str)
+  virtual fixed_string_base& operator= (const fixed_string_base &str)
   {
     return operator =(str.c_str());
   }
 
   // Assign
-  virtual static_string_base& operator= (const char *str)
+  virtual fixed_string_base& operator= (const char *str)
   {
     strncpy(str_, str, MAX_SIZE);
     str_[MAX_SIZE + 1] = '\0';
@@ -90,12 +90,12 @@ class static_string : public static_string_base
     return str_[pos];
   }
 
-  virtual static_string_base& append(const static_string_base &str)
+  virtual fixed_string_base& append(const fixed_string_base &str)
   {
     return append(str.c_str());
   }
 
-  virtual static_string_base& append(const char *str)
+  virtual fixed_string_base& append(const char *str)
   {
     const size_t size_remain = MAX_SIZE - size();
     strncat(str_, str, size_remain);
@@ -107,9 +107,9 @@ class static_string : public static_string_base
     return str_;
   }
 
-  static_string<MAX_SIZE> substr(size_t pos, size_t len) const
+  fixed_string<MAX_SIZE> substr(size_t pos, size_t len) const
   {
-    static_string<MAX_SIZE> result;
+    fixed_string<MAX_SIZE> result;
     memcpy(result.str_, &str_[pos], len);
     return result;
   }
@@ -118,10 +118,10 @@ class static_string : public static_string_base
 };
 
 template <size_t N1, size_t N2>
-static_string<N1 + N2 + 1> operator+ (const static_string<N1> &lhs,
-                                      const static_string<N2> &rhs)
+fixed_string<N1 + N2 + 1> operator+ (const fixed_string<N1> &lhs,
+                                      const fixed_string<N2> &rhs)
 {
-  static_string<N1 + N2 + 1> result(lhs);
+  fixed_string<N1 + N2 + 1> result(lhs);
   strcat(result.str_, rhs.str_);
   return result;
 }
